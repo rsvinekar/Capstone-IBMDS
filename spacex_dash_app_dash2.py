@@ -76,7 +76,7 @@ def get_scatter_plot(entered_site,payload_range):
     filtered_df = spacex_df[spacex_df['Payload Mass (kg)'].between(payload_range[0],payload_range[1])]
     if entered_site == 'ALL':
         fig = px.scatter(filtered_df, x="Payload Mass (kg)", y="class",color="Booster Version Category",title="All Launch sites", labels={
-                     "class": "Failure vs Success",
+                     "class": "Launch Outcome",
                      "Booster Version Category": "Booster Category"
                  })
         fig.update_layout(legend_title_text="Booster Category")
@@ -84,7 +84,7 @@ def get_scatter_plot(entered_site,payload_range):
     else:
         filtered_df = filtered_df[filtered_df['Launch Site']==entered_site]
         fig = px.scatter(filtered_df, x="Payload Mass (kg)", y="class",color="Booster Version Category",title="Launch Site:"+ entered_site, labels={
-                     "class": "Failure vs Success",
+                     "class": "Launch Outcome",
                      "Booster Version Category": "Booster Category"
                  })
         return fig
